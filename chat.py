@@ -1,7 +1,6 @@
 from convertHTML import paragraphs, htmlCleaner, indexSelect
-from filter import filter
+from filter import filter_text, filter_sentence, text_to_sentences
 from requester import wikiSearch, getRequest
-import requests
 
 def options(titles: list) -> None:
     """ Print's out the list of title's"""
@@ -16,15 +15,24 @@ def main():
     urls = DATA[3]
     options(titles)
 
+    #Select's the correct url in the from the title, and requests data
     url = urls[indexSelect(titles)]
     x = getRequest(url)
 
     # Convert's HTML to filtered sentences in a list
     clean_text = htmlCleaner(paragraphs(x.text))
-    filtered_sentences = filter(clean_text)
-    print(filtered_sentences)
+    sentences = text_to_sentences(clean_text)
+    filtered_sentences = filter_text(clean_text)
+    print(len(sentences))
+    print(len(filtered_sentences))
+    #filter question
+    #while True:
+    #question = filter_sentence(input("What is your question? "))
 
 
+
+
+    
 
 
     
