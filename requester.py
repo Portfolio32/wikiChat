@@ -16,4 +16,6 @@ def wikiSearch(search: str)-> list:
     R = S.get(url=URL, params=PARAMS)
     return R.json()
 
-
+def getRequest(url: str):
+    """ Identical purpose as requests get method"""
+    return requests.get(url)
