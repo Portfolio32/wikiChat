@@ -1,5 +1,5 @@
-from convertHTML import paragraphs, htmlCleaner, indexSelect
-from filter import filter_text, filter_sentence, text_to_sentences
+from code_filter import paragraphs, htmlCleaner, indexSelect
+from word_filter import filter_text, filter_sentence, text_to_sentences
 from requester import wikiSearch, getRequest
 
 def options(titles: list) -> None:
@@ -23,13 +23,18 @@ def main():
     clean_text = htmlCleaner(paragraphs(x.text))
     sentences = text_to_sentences(clean_text)
     filtered_sentences = filter_text(clean_text)
-    print(len(sentences))
-    print(len(filtered_sentences))
+
+
+
     #filter question
     #while True:
-    #question = filter_sentence(input("What is your question? "))
+    question = filter_sentence(input("What is your question? "))
 
-
+    # match the question to a corresponding sentnece in the text
+    # remember the text itself is a lsit of sentences
+    # Should I use synonyms? 
+    # I think I should. 
+    
 
 
     

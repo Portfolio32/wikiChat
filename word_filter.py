@@ -2,6 +2,7 @@ from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.corpus import stopwords
 from nltk.tokenize.treebank import TreebankWordDetokenizer
 from nltk.stem import WordNetLemmatizer
+from nltk.corpus import wordnet
 
 def text_to_sentences(text: str)-> list:
     """ Tokenizes the text into sentences"""
@@ -32,3 +33,11 @@ def filter_sentence(sentence:str)-> str:
     words = word_tokenize(sentence)
     new_sentence = [lem.lemmatize(word) for word in words if word not in stop_words]
     return TreebankWordDetokenizer().detokenize(new_sentence)
+
+def synonyms(word: str)-> list:
+    """Take a word and return's a set of synonyms """
+    synonyms = set()
+    for syn in wordnet.synsets(f"{word}"):
+        for name in syn.lemma_names():
+            synonyms.add(name)
+    return synonyms
