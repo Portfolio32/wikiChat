@@ -34,10 +34,13 @@ def filter_sentence(sentence:str)-> str:
     new_sentence = [lem.lemmatize(word) for word in words if word not in stop_words]
     return TreebankWordDetokenizer().detokenize(new_sentence)
 
-def synonyms(word: str)-> list:
+def synonyms(word: str)-> set:
     """Take a word and return's a set of synonyms """
     synonyms = set()
     for syn in wordnet.synsets(f"{word}"):
         for name in syn.lemma_names():
             synonyms.add(name)
     return synonyms
+
+def matches():
+    ...

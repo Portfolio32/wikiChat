@@ -1,5 +1,5 @@
-from code_filter import paragraphs, htmlCleaner, indexSelect
-from word_filter import filter_text, filter_sentence, text_to_sentences
+from strainer import paragraphs, htmlCleaner, indexSelect
+from language import filter_text, filter_sentence, text_to_sentences
 from requester import wikiSearch, getRequest
 
 def options(titles: list) -> None:
@@ -27,13 +27,22 @@ def main():
 
 
     #filter question
-    #while True:
     question = filter_sentence(input("What is your question? "))
+    # I should check matches for each sentence in the text
+    # for each sentence track the number of matches
+    
+    # I could count the number fo matches for each sentence and then 
+    # have a variable that sotres the greates number of matches
+    # if that sentence has the greatest number of matches
+    # store the index of that sentence as the most close
+    
+    # how to check the matches
+    # for each word in the sentence
+    # check if it matches my current word in the question
+    # if it does add one and break the loop 
+    # go to the next word in the question
+    
 
-    # match the question to a corresponding sentnece in the text
-    # remember the text itself is a lsit of sentences
-    # Should I use synonyms? 
-    # I think I should. 
     
 
 
